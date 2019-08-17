@@ -4,9 +4,11 @@ var Show = (function() {
   var $inputAmount;
   var $modalTransaction;
   var $selectTransactionType;
-  var $parameters; 
+  var $parameters;
+  var $notification;  
 
   var bankAccountId;
+  var url = "/api/v1/bank_accounts/new_transaction";
 
   var fetchElements = function() {
     $btnNewTransaction     = $("#btn-new-transaction");
@@ -15,6 +17,7 @@ var Show = (function() {
     $modalTransaction      = $("#modal-transaction");    
     $selectTransactionType = $("#select-transaction-type");
     $parameters            = $("#parameters");
+    $notification          = $(".notification");
 
     bankAccountId          = $parameters.data("bank-account-id");
   };
@@ -41,7 +44,27 @@ var Show = (function() {
       var transactionType = $selectTransactionType.val();
       disableControls();
 
-      console.log("Amount: " + amount + "Transaction Type: " + transactionType + " Bank Account ID: " + bankAccountId);        
+      console.log("Amount: " + amount + "Transaction Type: " + transactionType + " Bank Account ID: " + bankAccountId); 
+      
+      $notification.html("");
+
+      $.ajax({
+        url: url,
+        method: 'POST',
+        dataType: 'json',
+        data: {
+          amount: amount,
+          transaction_type: transactionType,
+          bank_account_id: bankAccountId 
+        },
+        success: function(response) {
+          window.location.href = "/bank_accounts/" + bankAccountId;
+        },
+        error: function(response) {
+          $notification.html(JSON.parse(response.responseText).errors.join());
+           enableControls();
+        }      
+      });
     });       
  };
 
