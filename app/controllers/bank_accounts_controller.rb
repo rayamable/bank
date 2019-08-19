@@ -17,10 +17,18 @@ class BankAccountsController < ApplicationController
 	  end
 	end
 
-	def edit		
+	def edit
+	  @bank_account = BankAccount.find(params[:id])		
 	end
 
-	def update		
+	def update
+	  @bank_account = BankAccount.find(params[:id]) 
+
+	  if @bank_account.update(bank_account_params)
+	  	redirect_to bank_account_path(@bank_account.id) 
+	  else
+	  	render "edit" 
+	  end		
 	end
 
 	def destroy		
