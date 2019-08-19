@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     
     resources :bank_accounts
 
+    resources :clients
+
     namespace :api do 
         namespace :v1 do 
             post "bank_accounts/new_transaction", to: "bank_accounts#new_transaction"
