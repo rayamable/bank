@@ -1,0 +1,13 @@
+%aside.main-sidebar
+  %section.sidebar{ style: "height: auto" }
+    %ul.sidebar-menu
+      %li.header
+        MAIN NAVIGATION
+      %li 
+        = link_to clients_path do 
+          .fa.fa-user
+          Clients
+      %li 
+        = link_to bank_accounts_path do 
+          .fa.fa-money
+          Bank Accounts

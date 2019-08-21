@@ -1,0 +1,33 @@
+%header.main-header
+  %a.logo{ href: "#" }
+    %span.logo-mini 
+      %b 
+        B 
+      NK 
+    %span.logo-lg
+      %b 
+        BANK 
+      App
+  %nav.navbar.navbar-static-top
+    %a.sidebar-toggle{ href: "#", data: { toggle: "offcanvas" }, role: "button" }
+      %span.sr-only
+        Toggle Navigation
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        %li.dropdown.user.user-menu.open
+          %a.dropdown-toggle{ href: "#", data: { toggle: "dropdown" }, "aria-example": true }
+            %img.user-image{ src: "#" }
+            %span.hidden-xs
+              Username/Email
+          %ul.dropdown-menu
+            %li.user-header
+              %img.img-circle{ src: "#" }
+              %p 
+                Username/Email
+            %li.user-body
+              test
+            %li.user-footer
+              .pull-right
+                = button_tag :sign_out, class: "btn btn-danger" do 
+                  .fa.fa-times
+                  Sign Out

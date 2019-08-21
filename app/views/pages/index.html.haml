@@ -1,23 +1,14 @@
-%hi
-  My Bank
+%section.content-header
+  %hi
+    My Bank
 
-.row
-  .col-md-12
-    %h2
-      Number of Accounts: #{number_of_accounts}
-    %h2
-      Number of Clients: #{number_of_clients}
+%section.content
+  .row
+    .col-md-12
+      %h2
+        Number of Accounts: #{number_of_accounts}
+      %h2
+        Number of Clients: #{number_of_clients}
 
-.row
-  .col-md-12
-    = link_to clients_path do 
-      Clients
-    %hr
-    = link_to new_client_path do 
-      New Client
-    %hr
-    = link_to bank_accounts_path do 
-      Bank Accounts
-    %hr     
-    = link_to new_bank_account_path do
-      New Bank Account
+  .row
+    .col-md-12
