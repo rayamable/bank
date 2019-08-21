@@ -1,4 +1,8 @@
-%h1 
-  New Client
+%section.content-header
+  %h1 
+    New Client
 
-= render partial: "form", locals: { client: @client }
+%section.content
+  .box.box-primary
+    .box-body  
+      = render partial: "form", locals: { client: @client }

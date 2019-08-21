@@ -3,11 +3,13 @@
     %ul.sidebar-menu
       %li.header
         MAIN NAVIGATION
-      %li 
+      %li{ class: "#{params[:controller] == 'clients' ? 'active' : ''}" } 
         = link_to clients_path do 
-          .fa.fa-user
-          Clients
-      %li 
+          %i.fa.fa-user
+          %span
+            Clients
+      %li{ class: "#{params[:controller] == 'bank_accounts' ? 'active' : ''}" }  
         = link_to bank_accounts_path do 
-          .fa.fa-money
-          Bank Accounts
+          %i.fa.fa-money
+          %span
+            Bank Accounts
