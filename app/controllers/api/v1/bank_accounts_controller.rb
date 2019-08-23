@@ -1,6 +1,8 @@
 module Api
     module V1
         class BankAccountsController < ApplicationController
+            before_action :authenticate_user! 
+            
             def new_transaction
                 amount            = params[:amount]
                 transaction_type  = params[:transaction_type]
@@ -9,7 +11,8 @@ module Api
                 errors  = ::BankAccounts::ValidateNewTransaction.new(
                             amount: amount,
                             transaction_type: transaction_type,
-                            bank_account_id: bank_account_id
+                            bank_account_id: bank_account_id,
+                            user: current_user
                           ).execute! 
 
                 if errors.size > 0 

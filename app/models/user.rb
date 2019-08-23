@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   ROLES = [
     "ADMIN",
-    "USER"
+    "USER",
+    "TELLER",
+    "MANAGER"
   ]
 
   # Include default devise modules. Others available are:

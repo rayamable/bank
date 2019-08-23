@@ -9,25 +9,24 @@
         BANK 
       App
   %nav.navbar.navbar-static-top
-    %a.sidebar-toggle{ href: "#", data: { toggle: "offcanvas" }, role: "button" }
+    %a.sidebar-toggle{ href: "#", data: { toggle: "offcanvas" } }
       %span.sr-only
         Toggle Navigation
-/    .navbar-custom-menu
-/      %ul.nav.navbar-nav
-/        %li.dropdown.user.user-menu.open
-/          %a.dropdown-toggle{ href: "#", data: { toggle: "dropdown" }, "aria-example": true }
-/            %img.user-image{ src: "#" }
-/            %span.hidden-xs
-/              Username/Email
-/          %ul.dropdown-menu
-/            %li.user-header
-/              %img.img-circle{ src: "#" }
-/              %p 
-/                Username/Email
-/            %li.user-body
-/              test
-/            %li.user-footer
-/              .pull-right
-/                = button_tag :sign_out, class: "btn btn-danger" do 
-/                  .fa.fa-times
-/                  Sign Out
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        %li.dropdown.user.user-menu.open
+          %a.dropdown-toggle{ href: "#", data: { toggle: "dropdown" }, "aria-example": true }
+            %img.user-image{ src: "#" }
+            %span.hidden-xs
+              #{current_user.username} (#{current_user.role})
+          %ul.dropdown-menu
+            %li.user-header
+              %img.img-circle{ src: "#" }
+              %p 
+                #{current_user.full_name}
+            %li.user-body
+              #{current_user.email}
+            %li.user-footer
+              = link_to destroy_user_session_path, class: "btn btn-danger btn-block", method: :delete do
+                .fa.fa-times
+                  Sign Out
